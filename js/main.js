@@ -38,9 +38,7 @@ app.bg = {
 };
 
 app.common = {
-  init: function() {
-    return console.log("hola mundo");
-  }
+  init: function() {}
 };
 
 app.faq = {
@@ -395,6 +393,44 @@ app.loader = {
   }
 };
 
+app.minheight = {
+  init: function() {
+    app.minheight.applyArticlesMinHeight();
+    setTimeout(function() {
+      return app.minheight.applyArticlesMinHeight();
+    }, 1000);
+    return $(window).on('resize', function() {
+      return app.minheight.applyArticlesMinHeight();
+    });
+  },
+  applyArticlesMinHeight: function() {
+    console.log("init minheight operativa");
+    return $("section").each(function() {
+      var articles, minheight, section;
+      section = $(this);
+      articles = section.find("article");
+      if (articles.length >= 2) {
+        console.log("funcion minheight operativa");
+        minheight = 0;
+        articles.attr("style", "");
+        if ($(window).width() > 480) {
+          articles.each(function() {
+            var article, height;
+            article = $(this);
+            height = article.outerHeight();
+            if (height > minheight) {
+              return minheight = height;
+            }
+          });
+          return articles.css({
+            'min-height': minheight + "px"
+          });
+        }
+      }
+    });
+  }
+};
+
 app.modal = {
   init: function() {
     $("[data-modal-login]").click(function(e) {
@@ -692,8 +728,8 @@ app.slider = {
 
 app.swiper = {
   init: function() {
-    var swiper;
-    return swiper = new Swiper('.swiper-newsocios', {
+    var swiper, swiper2, swiper3;
+    swiper = new Swiper('.swiper-newsocios', {
       loop: true,
       pagination: {
         el: '.swiper-pagination',
@@ -722,6 +758,91 @@ app.swiper = {
         }
       }
     });
+    swiper2 = new Swiper('.swiper-testimonies', {
+      loop: true,
+      pagination: {
+        el: '.swiper-bullets',
+        clickable: true,
+        dynamicBullets: true
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      speed: 1300,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+          spaceBetween: 40,
+          slidesPerGroup: 1
+        },
+        700: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+          slidesPerGroup: 1
+        }
+      }
+    });
+    swiper3 = new Swiper('.swiper-newscarousel', {
+      loop: true,
+      pagination: {
+        el: '.swiper-bullets',
+        clickable: true,
+        dynamicBullets: true
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      speed: 1300,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+          spaceBetween: 40,
+          slidesPerGroup: 1
+        },
+        700: {
+          slidesPerView: 1,
+          spaceBetween: 40,
+          slidesPerGroup: 1
+        }
+      }
+    });
+    return swiper3.on('slideChangeTransitionEnd', function() {
+      return app.bg.init();
+    });
+  }
+};
+
+app.tabs = {
+  init: function() {
+    return $(".tabs").each(function() {
+      var tab;
+      tab = $(this);
+      return tab.find(".tabs__header .tab").click(function(e) {
+        var index;
+        e.preventDefault();
+        index = $(this).index();
+        return app.tabs.open(tab, index);
+      });
+    });
+  },
+  open: function(tab, index) {
+    tab.find(".tabs__header .tab").removeClass("tab--current");
+    tab.find(".tabs__header .tab").eq(index).addClass("tab--current");
+    tab.find(".tabs__body .tab").removeClass("tab--current");
+    tab.find(".tabs__body .tab").eq(index).addClass("tab--current");
+    if (app.scroll) {
+      return app.scroll.dscroll();
+    }
   }
 };
 
