@@ -1940,6 +1940,16 @@ article.article--line .article__bg {
     height: 200px;
   }
 }
+article.article--document {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+article.article--document .article__icon {
+  margin-right: 20px;
+  min-width: 70px;
+}
 article.article--box {
   display: -ms-flexbox;
   display: flex;
@@ -1977,6 +1987,44 @@ article.article--feature .article__body .article__content .article__date {
   color: #0056ca;
   text-decoration: underline;
   margin-bottom: 10px;
+}
+article.article--team {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+article.article--team .article__avatar {
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  min-width: 80px;
+  background: linear-gradient(126.54deg, #00d700 -3.03%, #0056ca 56.75%);
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  margin-right: 10px;
+}
+article.article--team .article__avatar img {
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 3px;
+}
+article.article--team .article__body .article__name {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 .bg {
   position: absolute;
@@ -3616,9 +3664,7 @@ section .section__subtitle {
   margin-bottom: 10px;
 }
 section .section__breadcrumb {
-  position: absolute;
-  top: 40px;
-  left: 20px;
+  position: relative;
   background-color: #e7eff9;
   padding: 2px;
   padding-bottom: 5px;
@@ -3626,12 +3672,15 @@ section .section__breadcrumb {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  text-align: left;
 }
 @media (min-width: 720px) {
   section .section__breadcrumb {
-    left: 60px;
     padding: 5px;
     padding-bottom: 8px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
   }
 }
 section .section__breadcrumb:after {
@@ -3646,15 +3695,27 @@ section .section__breadcrumb:after {
 section .section__breadcrumb ol {
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
+}
+section .section__breadcrumb ol li {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 section .section__breadcrumb ol li.current a {
   font-weight: 600;
 }
 section .section__breadcrumb ol li a {
+  position: relative;
+  display: inline-block;
   color: #002558;
   padding: 0 10px;
   font-size: 12px;
   line-height: 18px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
 }
 @media (min-width: 720px) {
   section .section__breadcrumb ol li a {
@@ -3670,60 +3731,6 @@ section .section__breadcrumb ol li a .fas {
 }
 section .section__breadcrumb ol li a:hover {
   text-decoration: underline;
-}
-section .section__social {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-align: center;
-      align-items: center;
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-section .section__social .section__social__logo {
-  position: relative;
-  width: 40px;
-  border-radius: 5px;
-  padding: 5px;
-  background-color: #0056ca;
-  margin: 0 10px;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-align: center;
-      align-items: center;
-  border: 2px solid #0056ca;
-}
-section .section__social .section__social__logo:hover {
-  background-color: #fff;
-}
-section .section__social .section__social__logo:hover a {
-  color: #0056ca;
-}
-section .section__social .section__social__logo:hover svg path {
-  fill: #0056ca;
-}
-section .section__social .section__social__logo a {
-  color: #fff;
-  font-size: 24px;
-  line-height: 24px;
-}
-section .section__social .section__social__logo a:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-section .section__social .section__social__logo svg {
-  width: 20px;
-}
-section .section__social .section__social__logo svg path {
-  fill: #fff;
 }
 section .section__header {
   margin-bottom: 20px;
@@ -3881,7 +3888,7 @@ section .section__wrap.section__wrap--header {
   position: relative;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 100px 20px 40px;
+  padding: 40px 20px 40px;
 }
 @media (min-width: 720px) {
   section .section__wrap.section__wrap--header {
@@ -4020,6 +4027,55 @@ section.section--header {
     margin-top: 140px;
   }
 }
+section.section--header.section--header--new .section__wrap {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px 40px;
+}
+@media (min-width: 720px) {
+  section.section--header.section--header--new .section__wrap {
+    padding: 100px 60px;
+  }
+}
+@media (min-width: 720px) {
+  section.section--header.section--header--new .section__bg {
+    width: 45%;
+  }
+}
+section.section--header.section--header--new .section__info {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  margin-top: 40px;
+}
+section.section--header.section--header--new .section__info .section__date {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #0056ca;
+  margin-right: 40px;
+}
+section.section--header.section--header--new .section__info .section__info__socials {
+  display: -ms-flexbox;
+  display: flex;
+}
+section.section--header.section--header--new .section__info .section__info__socials .section__social a {
+  background-color: #fff;
+  box-shadow: 1px 3px 20px -2px rgba(0,0,0,0.149);
+  padding: 5px 10px;
+  font-size: 20px;
+  line-height: 20px;
+  margin: 5px;
+  border-radius: 5px;
+}
+section.section--header.section--header--new .section__info .section__info__socials .section__social a:hover {
+  background-color: #0056ca;
+  color: #fff;
+}
 section.section--header .section__lines {
   position: absolute;
   bottom: -10%;
@@ -4040,6 +4096,21 @@ section.section--header .section__lines {
 section.section--header .section__lines img {
   width: 100%;
   margin: initial;
+}
+section.section--header .section__header {
+  position: relative;
+  margin: initial;
+  margin-bottom: 20px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+}
+@media (min-width: 720px) {
+  section.section--header .section__header {
+    margin-bottom: 40px;
+    overflow: visible;
+    white-space: normal;
+  }
 }
 @media (min-width: 720px) {
   section.section--header .section__content {
@@ -4448,6 +4519,40 @@ section.section--newscarousel .swiper-pagination-bullet {
 }
 section.section--newscarousel .swiper-pagination-bullet-active {
   background-color: #00d53a;
+}
+section.section--wp .section__footer .section__socials {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+section.section--wp .section__footer .section__socials .section__social a {
+  background-color: #fff;
+  box-shadow: 1px 3px 20px -2px rgba(0,0,0,0.149);
+  padding: 5px 10px;
+  font-size: 24px;
+  line-height: 24px;
+  margin: 10px;
+  border-radius: 5px;
+}
+section.section--wp .section__footer .section__socials .section__social a:hover {
+  background-color: #0056ca;
+  color: #fff;
+}
+section.section--content .section__content {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 1px 3px 20px -2px rgba(0,0,0,0.149);
+  text-align: center;
+}
+@media (min-width: 720px) {
+  section.section--content .section__content {
+    padding: 40px;
+  }
+}
+section.section--content .section__content p:last-child {
+  margin-bottom: 0;
 }
 .slider {
   position: relative;
@@ -5410,11 +5515,13 @@ section.section--newscarousel .swiper-pagination-bullet-active {
   margin-bottom: 20px;
   color: #002558;
   opacity: 0.8;
+  font-size: 14px;
+  line-height: 22px;
 }
 @media (min-width: 720px) {
   .wp p {
-    font-size: 18px;
-    line-height: 30px;
+    font-size: 16px;
+    line-height: 22px;
   }
 }
 .wp img {
